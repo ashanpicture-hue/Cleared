@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cleared.devs.surf/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cleared.devs.surf/pricing.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cleared.devs.surf/sample-report.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://cleared.devs.surf/terms.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/privacy.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/refund.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/contact.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://cleared.devs.surf/app/signup.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://cleared.devs.surf/app/login.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://cleared.devs.surf/app/new-shipment.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://cleared.devs.surf/app/shipment.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://cleared.devs.surf/app/saved.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/app/billing.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/app/team-seats.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://cleared.devs.surf/reviewer/queue.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://cleared.devs.surf/reviewer/review.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://cleared.devs.surf/admin/users.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://cleared.devs.surf/admin/orders.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://cleared.devs.surf/admin/costs.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://cleared.devs.surf/admin/refunds.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

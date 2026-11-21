@@ -1,0 +1,35 @@
+# Cleared
+> Export document checking for Pakistani exporters — quantities, values, weights, consignee, HS codes and LC terms compared across every document, reviewed by a person before you submit to the bank.
+
+Cleared helps exporters in Pakistan avoid bank document rejections. Upload your PO or LC with the commercial invoice, packing list and bill of lading. An agent extracts fields, a rules engine compares them across documents, and a human reviewer signs off the mismatch report and corrected PDF set. Pay after delivery, with a refund if the corrected set fails our checklist.
+
+## Primary pages
+- [Home](https://cleared.devs.surf/): Landing page — how Cleared works, pricing tiers, and who joins as it grows.
+- [Pricing](https://cleared.devs.surf/pricing.html): Per shipment, Desk, and Partners plans. First three shipments free.
+- [Sample report](https://cleared.devs.surf/sample-report.html): A worked mismatch report so visitors see what a mismatch report looks like before sending real documents.
+- [Contact](https://cleared.devs.surf/contact.html): WhatsApp, email and LinkedIn contact details.
+- [Terms of Service](https://cleared.devs.surf/terms.html): Terms governing use of Cleared.
+- [Privacy Policy](https://cleared.devs.surf/privacy.html): How documents and extracted data are collected, used and protected.
+- [Refund Policy](https://cleared.devs.surf/refund.html): Pay-after-delivery promise and refund conditions.
+
+## Customer app
+- [Create account](https://cleared.devs.surf/app/signup.html): Phone OTP signup — no email password.
+- [Log in](https://cleared.devs.surf/app/login.html): Phone OTP login.
+- [New shipment](https://cleared.devs.surf/app/new-shipment.html): Upload PO/LC and documents, or forward from WhatsApp or email.
+- [Shipment](https://cleared.devs.surf/app/shipment.html): Status, mismatch report and corrected document set download.
+- [Saved buyers, products & HS codes](https://cleared.devs.surf/app/saved.html): Repeat shipment shortcuts.
+- [Billing](https://cleared.devs.surf/app/billing.html): Free orders left, invoices, bank transfer / JazzCash / Easypaisa / Raast.
+- [Team seats](https://cleared.devs.surf/app/team-seats.html): Desk plan staff seats.
+
+## Reviewer console (internal)
+- [Review queue](https://cleared.devs.surf/reviewer/queue.html): Shipments waiting for review.
+- [Review shipment](https://cleared.devs.surf/reviewer/review.html): Side-by-side documents with agent findings; accept, edit or reject and sign off.
+
+## Admin (internal)
+- [Users](https://cleared.devs.surf/admin/users.html): Users, roles and free-order abuse tracking.
+- [Orders](https://cleared.devs.surf/admin/orders.html): All shipments and status.
+- [Costs](https://cleared.devs.surf/admin/costs.html): Cost per shipment — model usage plus review minutes.
+- [Refunds](https://cleared.devs.surf/admin/refunds.html): Refund requests and status.
+
+## Optional reference
+- [Payments](https://cleared.devs.surf/app/billing.html): Bank transfer, JazzCash, Easypaisa and Raast payment details.

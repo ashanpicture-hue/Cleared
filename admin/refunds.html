@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
 <link rel="stylesheet" href="../css/cleared.css">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="../js/api.js" defer></script>
 </head>
 <body>
 <div class="app-shell">
@@ -20,12 +23,12 @@
 </nav>
 </aside>
 <main class="app-main">
-<div class="app-header">
+<div class="app-header reveal-card">
 <h2>Refunds</h2>
-<p style="color:var(--mute);font-size:0.95ref">Refund requests and pay-after-delivery claims.</p>
+<p style="color:var(--mute);font-size:0.95rem">Refund requests and pay-after-delivery claims.</p>
 </div>
 
-<div class="card" style="margin-bottom:20px">
+<div class="card reveal-card" style="margin-bottom:20px">
 <table class="queue-table">
 <thead><tr><th>Shipment</th><th>Exporter</th><th>Reason</th><th>Amount</th><th>Requested</th><th>Status</th></tr></thead>
 <tbody>
@@ -34,12 +37,13 @@
 </tbody></table>
 </div>
 
-<div class="card">
+<div class="card reveal-card">
 <h3>Refund policy</h3>
 <p class="sub">If a corrected set fails our internal checklist, we refund our fee for that shipment in full. Refunds are paid through the same channel used (bank transfer, JazzCash, Easypaisa or Raast).</p>
 </div>
 
 </main>
 </div>
+
 </body>
 </html>

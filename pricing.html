@@ -47,9 +47,9 @@
 <div class="w">
 
 <section id="tiers">
-<h2>Pricing</h2>
+<h2 class="section-title reveal-text">Pricing</h2>
 <p class="sub">Your first three shipments are free. After that you pay when the finished set arrives, by bank transfer, JazzCash, Easypaisa or Raast. These are starting prices and may change after the first pilots.</p>
-<div class="tiers">
+<div class="tiers reveal-grid">
 <div class="tier">
 <h3>Per shipment</h3>
 <div class="price">Rs 3,000 <small>and up, per shipment</small></div>
@@ -89,9 +89,9 @@
 </section>
 
 <section id="how">
-<h2>How it works</h2>
+<h2 class="section-title reveal-text">How it works</h2>
 <p class="sub">A person reviews every report before it reaches you.</p>
-<div class="zero">
+<div class="zero reveal-grid">
 <div>
 <h3>Send</h3>
 <p>Share the PO or LC and your documents by WhatsApp or email. Scans and Excel files are fine.</p>
@@ -122,5 +122,21 @@
 <div class="legal"><span>© 2026 Cleared. A second check, not a guarantee. It does not replace your customs agent's filing.</span><nav aria-label="Legal"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="refund.html">Refund Policy</a></nav></div>
 </div></footer>
 
+<script src="js/api.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.from('.section-title', { scrollTrigger: { trigger: '.section-title', start: 'top 80%', once: true }, y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' });
+  gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', once: true }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.1, ease: 'power3.out' });
+  });
+  gsap.utils.toArray('.reveal-grid').forEach(grid => {
+    gsap.from(grid, { scrollTrigger: { trigger: grid, start: 'top 85%', once: true }, opacity: 0, duration: 0.6 });
+  });
+})();
+</script>
 </body>
 </html>

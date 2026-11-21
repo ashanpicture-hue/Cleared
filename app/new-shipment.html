@@ -7,8 +7,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
 <link rel="stylesheet" href="../css/cleared.css">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="../js/api.js" defer></script>
 </head>
 <body>
+
 <header class="top"><div class="bar">
 <a class="logo" href="../index.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</a>
 <nav class="links" aria-label="Main"><a href="../index.html#how">How it works</a><a href="../pricing.html">Pricing</a><a href="../contact.html">Contact</a></nav>
@@ -16,11 +20,11 @@
 </div></header>
 <div class="w" style="max-width:760px">
 
-<section style="padding:32px 0 80px">
+<section style="padding:32px 0 80px" class="reveal-text">
 <h2>New shipment</h2>
 <p class="sub">Upload the PO or LC and your documents, or forward them from WhatsApp or email. Scans and Excel files are fine.</p>
 
-<div class="card">
+<div class="card reveal-card">
 <form id="shipmentForm" novalidate>
 <div class="form-group">
 <label for="shipmentRef">Shipment reference (optional)</label>
@@ -49,7 +53,7 @@
 </form>
 </div>
 
-<div class="card" style="margin-top:24px">
+<div class="card" style="margin-top:24px" class="reveal-card">
 <h3>What happens next</h3>
 <ul style="color:var(--mute);padding-left:20px;margin-top:8px">
 <li>An agent extracts fields from every document.</li>
@@ -66,19 +70,39 @@
 <div class="legal" style="justify-content:center"><span>© 2026 Cleared.</span><nav aria-label="Legal" style="gap:16px"><a href="../terms.html">Terms of Service</a><a href="../privacy.html">Privacy Policy</a><a href="../refund.html">Refund Policy</a></nav></div>
 </div></footer>
 
-</div>
+<script src="../js/api.js"></script>
 <script>
 (function(){
-var form=document.getElementById('shipmentForm'),msg=document.getElementById('shipMsg');
-form.addEventListener('submit',function(e){
-e.preventDefault();
-var btn=form.querySelector('button[type="submit"]');
-btn.disabled=true;btn.textContent='Processing…';
-msg.textContent='Your shipment is being checked. We\'ll notify you when the report is ready.';
-setTimeout(function(){
-msg.textContent='Check complete. Opening your shipment…';
-setTimeout(function(){location.href='shipment.html';},700);
-},1200);
+const form = document.getElementById('shipmentForm');
+const msg = document.getElementById('shipMsg');
+const btn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const files = Array.from(form.docs.files);
+  const data = {
+    reference: form.shipmentRef.value.trim(),
+    buyer: form.buyer.value.trim(),
+    lcTerms: form.lc.value.trim(),
+    forwardText: form.forward.value.trim(),
+    files
+  };
+
+  btn.disabled = true;
+  btn.textContent = 'Processing…';
+  msg.textContent = '';
+
+  try {
+    const result = await ClearedAPI.shipmentAPI.create(data);
+    msg.textContent = 'Your shipment is being checked. We\'ll notify you when the report is ready.';
+    gsap.to(btn, { scale: 0.95, duration: 0.1, yoyo: true, repeat: 1 });
+    setTimeout(() => { location.href = 'shipment.html?id=' + result.shipment.id; }, 1200);
+  } catch (err) {
+    msg.textContent = err.message || 'Failed to create shipment.';
+    btn.disabled = false;
+    btn.textContent = 'Start check';
+    gsap.fromTo(form, { x: -8 }, { x: 8, duration: 0.1, yoyo: true, repeat: 3 });
+  }
 });
 })();
 </script>
