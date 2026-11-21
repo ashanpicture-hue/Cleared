@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Review shipment — Cleared</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
+<link rel="stylesheet" href="../css/cleared.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+<div class="app-shell">
+<aside class="app-sidebar">
+<div class="brand"><span class="ic" style="width:28px;height:28px;border-radius:7px;background:linear-gradient(160deg,#5fb3cf,#1b6f8a);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</div>
+<nav>
+<a href="queue.html">Review queue</a>
+<a href="#" class="active">Sign-offs</a>
+<a href="#">My reviews</a>
+</nav>
+</aside>
+<main class="app-main">
+<div class="app-header">
+<h2>Review: KHI-2291</h2>
+<p style="color:var(--mute);font-size:0.95ref">Exporter: Alam Exports &middot; Submitted 14 Nov 2026</p>
+</div>
+
+<div class="set">
+<header><span>Agent findings</span><span class="stamp bad">3 MISMATCHES</span></header>
+<div style="overflow-x:auto"><table class="tbl" style="min-width:640px">
+<thead><tr><th>Field</th><th>Invoice</th><th>Packing list</th><th>Bill of lading</th><th>LC terms</th><th>Agent call</th><th>Your decision</th></tr></thead>
+<tbody>
+<tr>
+<td>Gross weight</td>
+<td>4,820 kg</td>
+<td class="x">4,280 kg</td>
+<td>4,820 kg</td>
+<td>4,820 kg</td>
+<td>Mismatch</td>
+<td><select style="width:120px"><option>Accept</option><option>Edit</option><option>Reject</option></select></td>
+</tr>
+<tr>
+<td>Cartons</td>
+<td>240</td>
+<td>240</td>
+<td class="x">204</td>
+<td>240</td>
+<td>Mismatch</td>
+<td><select style="width:120px"><option>Accept</option><option>Edit</option><option>Reject</option></select></td>
+</tr>
+<tr>
+<td>Consignee</td>
+<td>Van Dijk BV</td>
+<td>Van Dijk BV</td>
+<td class="x">Van Dyk B.V.</td>
+<td>Van Dijk BV</td>
+<td>Mismatch</td>
+<td><select style="width:120px"><option>Accept</option><option>Edit</option><option>Reject</option></select></td>
+</tr>
+<tr>
+<td>Port of discharge</td>
+<td>Rotterdam</td>
+<td>Rotterdam</td>
+<td>Rotterdam</td>
+<td class="x">Rottterdam</td>
+<td>Mismatch</td>
+<td><select style="width:120px"><option>Accept</option><option>Edit</option><option>Reject</option></select></td>
+</tr>
+</tbody></table></div>
+<footer><span>Four fields flagged by the agent.</span></footer>
+</div>
+
+<div class="side-by-side" style="margin-top:24px">
+<div class="doc-panel">
+<header>Bill of lading (page 1)</header>
+<div class="content">B/L NO: BOL-4412<br>DATE: 12 Nov 2026<br>CONSIGNEE: Van Dyk B.V.<br>GROSS WEIGHT: 4,820 kg<br>CARTONS: 204<br>HS CODE: 6109.10<br>PORT: Rotterdam</div>
+</div>
+<div class="doc-panel">
+<header>Commercial invoice (page 1)</header>
+<div class="content">INVOICE NO: INV-8821<br>DATE: 10 Nov 2026<br>CONSIGNEE: Van Dijk BV<br>GROSS WEIGHT: 4,820 kg<br>CARTONS: 240<br>HS CODE: 6109.10<br>PORT: Rotterdam<br>TOTAL: USD 24,100</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:24px">
+<h3>Sign off</h3>
+<p class="sub">Once you sign off, the mismatch report and corrected document set are released to the exporter.</p>
+<div class="row" style="margin-top:16px;gap:12px">
+<button class="btn" style="background:var(--sea);color:#fff">Accept all &amp; sign off</button>
+<button class="btn alt">Request changes</button>
+</div>
+</div>
+
+</main>
+</div>
+</body>
+</html>

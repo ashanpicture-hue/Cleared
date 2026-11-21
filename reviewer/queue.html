@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Review queue — Cleared</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
+<link rel="stylesheet" href="../css/cleared.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+<div class="app-shell">
+<aside class="app-sidebar">
+<div class="brand"><span class="ic" style="width:28px;height:28px;border-radius:7px;background:linear-gradient(160deg,#5fb3cf,#1b6f8a);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</div>
+<nav>
+<a href="queue.html" class="active">Review queue</a>
+<a href="#">Sign-offs</a>
+<a href="#">My reviews</a>
+</nav>
+</aside>
+<main class="app-main">
+<div class="app-header">
+<h2>Review queue</h2>
+<p style="color:var(--mute);font-size:0.95rem">Shipments waiting for your review. Accept, edit or reject each finding, then sign off.</p>
+</div>
+
+<div class="card" style="margin-bottom:20px">
+<table class="queue-table">
+<thead><tr><th>Shipment</th><th>Exporter</th><th>Documents</th><th>Mismatches</th><th>Submitted</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>KHI-2291</td><td>Alam Exports</td><td>4</td><td>3</td><td>14 Nov 2026</td><td><a href="review.html?id=2291" class="btn alt" style="padding:6px 12px;font-size:0.85rem">Review</a></td></tr>
+<tr><td>KHI-2287</td><td>Karachi Textiles</td><td>3</td><td>2</td><td>13 Nov 2026</td><td><a href="review.html?id=2287" class="btn alt" style="padding:6px 12px;font-size:0.85rem">Review</a></td></tr>
+<tr><td>KHI-2283</td><td>Indus Traders</td><td>5</td><td>1</td><td>12 Nov 2026</td><td><a href="review.html?id=2283" class="btn alt" style="padding:6px 12px;font-size:0.85rem">Review</a></td></tr>
+<tr><td>KHI-2279</td><td>Port Cargo</td><td>3</td><td>4</td><td>11 Nov 2026</td><td><a href="review.html?id=2279" class="btn alt" style="padding:6px 12px;font-size:0.85rem">Review</a></td></tr>
+</tbody></table>
+</div>
+
+<div class="card">
+<h3>Empty state</h3>
+<p class="sub">No shipments waiting for review. New submissions appear here automatically and you're notified by WhatsApp or email.</p>
+</div>
+
+</main>
+</div>
+</body>
+</html>
