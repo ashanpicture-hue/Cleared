@@ -1,0 +1,359 @@
+{
+  "summary": {
+    "health_score": 68,
+    "business_type": "B2B SaaS / Professional Service (Export Document Verification for Pakistani Exporters)",
+    "top_findings": [
+      "Zero informational content / blog for top-of-funnel keywords",
+      "Schema markup incomplete: only Organization + WebPage; missing Service, FAQPage, HowTo, Review",
+      "6 of 7 public pages missing meta descriptions",
+      "Three.js + GSAP + Tailwind CDN loaded on all pages but only used on homepage",
+      "Thin content on secondary pages (all under 300 words)"
+    ],
+    "quick_wins": [
+      "Add meta descriptions to all 6 pages (15 min)",
+      "Add FAQPage schema to Home + Pricing + Contact (45 min)",
+      "Add HowTo schema for 'How it works' section (20 min)",
+      "Move Three.js/GSAP/Tailwind CDN to homepage only (30 min)",
+      "Add display=swap to Google Fonts URL (2 min)"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 72,
+      "what_works": [
+        "Clean semantic HTML5 with proper lang and viewport",
+        "HTTPS enforced via HSTS (max-age=63072000)",
+        "Security headers: X-Content-Type-Options, X-Frame-Options, Referrer-Policy, CSP, Permissions-Policy",
+        "Robots.txt correctly allows public pages, blocks /app/, /admin/, /reviewer/, /api/",
+        "Sitemap.xml exists with 7 public URLs",
+        "Skip-to-content link for accessibility",
+        "Preconnect hints for Google Fonts",
+        "No duplicate content or canonical issues detected"
+      ],
+      "findings": [
+        {
+          "title": "No XML sitemap separation for public vs private sections",
+          "severity": "High",
+          "description": "Single sitemap.xml lists all public pages. App/admin/reviewer correctly noindexed via X-Robots-Tag but not excluded from sitemap structure.",
+          "recommendation": "Create separate sitemap for public pages only. Keep app/admin/reviewer out of sitemap entirely."
+        },
+        {
+          "title": "CSP may block inline scripts",
+          "severity": "Medium",
+          "description": "CSP: script-src 'self' but pages use inline <script> blocks (GSAP animations, demo interactions).",
+          "recommendation": "Add 'unsafe-inline' to script-src OR move all inline scripts to external files."
+        },
+        {
+          "title": "No crawl-delay in robots.txt",
+          "severity": "Medium",
+          "description": "No crawl-delay directive; could be aggressive for small server.",
+          "recommendation": "Add 'Crawl-delay: 10' for polite crawling."
+        },
+        {
+          "title": "Missing security.txt",
+          "severity": "Low",
+          "description": "No /.well-known/security.txt for vulnerability reporting.",
+          "recommendation": "Add security.txt with contact email."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 75,
+      "what_works": [
+        "Clear value proposition above fold with specific user benefit",
+        "Strong E-E-A-T: 'A person reviews every report before it reaches you' (Experience + Expertise)",
+        "Specific use case: Pakistani exporters, WhatsApp/email workflow, local payment methods",
+        "Concrete interactive demo: mismatch table with real field examples",
+        "Trust signals: named reviewer (A. Rehman), refund policy, pay-after-delivery model",
+        "Comprehensive legal pages: Terms, Privacy, Refund all detailed"
+      ],
+      "findings": [
+        {
+          "title": "Zero informational content / blog",
+          "severity": "Critical",
+          "description": "No articles, guides, or resources for keywords like 'export documentation Pakistan', 'letter of credit discrepancies', 'bill of lading errors', 'customs clearance Pakistan', 'HS code lookup'.",
+          "recommendation": "Launch a content hub: /guides/, /blog/, or /resources/. Target 20+ high-intent keywords."
+        },
+        {
+          "title": "Thin content on secondary pages",
+          "severity": "High",
+          "description": "Contact (180 words), Sample Report (220 words), Terms (280 words), Privacy (250 words), Refund (260 words). All under 300 words.",
+          "recommendation": "Expand each to 500+ words with FAQs, examples, local context."
+        },
+        {
+          "title": "Pricing page lacks comparison table",
+          "severity": "High",
+          "description": "Three tiers but no feature comparison matrix. Users must scroll to compare.",
+          "recommendation": "Add sticky comparison table or accordion."
+        },
+        {
+          "title": "No case studies / testimonials",
+          "severity": "Medium",
+          "description": "'Reviewed by A. Rehman' is the only social proof. No logos, no customer quotes, no metrics.",
+          "recommendation": "Add 3-5 case studies with shipment volumes, time saved, error reduction %."
+        },
+        {
+          "title": "Contact page WhatsApp number placeholder",
+          "severity": "Medium",
+          "description": "Shows 'coming at launch' — signals unfinished product.",
+          "recommendation": "Replace with real number or 'Join waitlist' CTA."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 65,
+      "what_works": [
+        "Homepage has optimized title, meta description, H1, 1200+ words",
+        "All pages have unique H1 matching page topic",
+        "Semantic HTML structure with proper heading hierarchy (mostly)",
+        "Internal linking via footer navigation"
+      ],
+      "findings": [
+        {
+          "title": "6 of 7 pages missing meta descriptions",
+          "severity": "High",
+          "description": "Only homepage has meta description. All others will use auto-generated snippets.",
+          "recommendation": "Add unique, compelling meta descriptions (150-160 chars) to all pages."
+        },
+        {
+          "title": "Inconsistent title tag format",
+          "severity": "Medium",
+          "description": "Home: 'Cleared: export documents...' | Others: 'Page Title' only. No brand suffix.",
+          "recommendation": "Standardize: 'Page Title — Cleared' or 'Cleared — Page Title'."
+        },
+        {
+          "title": "No internal linking from homepage to legal pages",
+          "severity": "Medium",
+          "description": "Footer links only. No contextual links from content.",
+          "recommendation": "Add 'See our Refund Policy' link in pricing section, 'Read Privacy Policy' in signup flow."
+        },
+        {
+          "title": "Heading hierarchy skips on Sample Report",
+          "severity": "Low",
+          "description": "Sample Report: H1 → H3 (no H2).",
+          "recommendation": "Ensure H1 → H2 → H3 hierarchy."
+        }
+      ]
+    },
+    {
+      "name": "Schema & Structured Data",
+      "score": 55,
+      "what_works": [
+        "Organization schema on Home, Pricing, Contact, Sample Report",
+        "WebPage schema on all 7 pages",
+        "Valid JSON-LD syntax, no validation errors"
+      ],
+      "findings": [
+        {
+          "title": "No Service schema for core offering",
+          "severity": "Critical",
+          "description": "Primary offering not defined as structured data. Missing serviceType, offers, areaServed, provider.",
+          "recommendation": "Add Service schema with serviceType: 'Export Document Verification', offers (Per Shipment, Desk, Partners), areaServed: 'PK', provider: Organization."
+        },
+        {
+          "title": "No FAQPage schema",
+          "severity": "High",
+          "description": "Zero FAQ structured data despite clear Q&A content in prose.",
+          "recommendation": "Add FAQPage to Home (6-8 Qs), Pricing (4-5 Qs), Contact (3-4 Qs)."
+        },
+        {
+          "title": "No HowTo schema for 4-step process",
+          "severity": "High",
+          "description": "'How it works' 4-step process (Send → Check → Review → Pay) is perfect HowTo candidate.",
+          "recommendation": "Add HowTo with 4 steps, tool/supply for documents."
+        },
+        {
+          "title": "Organization schema incomplete",
+          "severity": "Medium",
+          "description": "Missing logo, sameAs (only LinkedIn), contactPoint incomplete.",
+          "recommendation": "Add logo URL, Twitter/X, Facebook, email, phone to Organization schema."
+        },
+        {
+          "title": "Legal pages missing Organization schema",
+          "severity": "Medium",
+          "description": "Terms, Privacy, Refund only have WebPage schema.",
+          "recommendation": "Add Organization schema to all pages for consistency."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 60,
+      "what_works": [
+        "Zero raster images — only SVG logo/favicon",
+        "Variable fonts (Bricolage Grotesque, Fraunces) reduce font weight",
+        "Preconnect hints for fonts.googleapis.com and fonts.gstatic.com",
+        "Minimal inline CSS (cleared.css only)"
+      ],
+      "findings": [
+        {
+          "title": "Heavy JS libraries loaded globally but used only on homepage",
+          "severity": "High",
+          "description": "Three.js (~80KB), GSAP (~40KB), ScrollTrigger (~20KB), Tailwind CDN (~60KB) loaded on all 7 pages but only used on index.html.",
+          "recommendation": "Move Three.js/GSAP/ScrollTrigger/Tailwind CDN to homepage only. Other pages load only cleared.css + api.js."
+        },
+        {
+          "title": "Tailwind CDN in production",
+          "severity": "High",
+          "description": "Full Tailwind JIT compiler runs in browser — heavy for production, CSP issues.",
+          "recommendation": "Build Tailwind locally via CLI; serve minified CSS. Remove CDN script."
+        },
+        {
+          "title": "Inline scripts on every page",
+          "severity": "Medium",
+          "description": "GSAP animation init + demo interaction scripts inline on every page.",
+          "recommendation": "Move to external app.js (shared) and home.js (homepage-only); load conditionally."
+        },
+        {
+          "title": "No resource hints for heavy libs",
+          "severity": "Medium",
+          "description": "No preload/prefetch for GSAP/Three.js on homepage.",
+          "recommendation": "Add <link rel='preload' as='script'> for GSAP/Three.js on home."
+        },
+        {
+          "title": "Font-display not specified",
+          "severity": "Low",
+          "description": "Google Fonts URL lacks &display=swap parameter.",
+          "recommendation": "Add &display=swap to font URL."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 70,
+      "what_works": [
+        "llms.txt exists at root per llmstxt.org spec",
+        "robots.txt allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)",
+        "Clear, factual content with specific verifiable claims (pricing, process, payment methods)",
+        "Expert review signal: 'Reviewed by A. Rehman (documentation officer)'",
+        "Structured data (Organization, WebPage) present for entity extraction",
+        "No marketing fluff — concrete, verifiable claims"
+      ],
+      "findings": [
+        {
+          "title": "No expert quotes / citations",
+          "severity": "High",
+          "description": "Content lacks citable expert statements (+41% citation lift per research).",
+          "recommendation": "Add 2-3 expert quotes from documentation officers, freight forwarders, bankers."
+        },
+        {
+          "title": "No statistics / data points",
+          "severity": "High",
+          "description": "No metrics: 'X% of shipments have errors', 'Y days saved', 'Z% faster clearance'.",
+          "recommendation": "Add industry stats (Pakistan customs error rates, LC rejection rates) with sources."
+        },
+        {
+          "title": "llms.txt could be richer",
+          "severity": "Medium",
+          "description": "Current llms.txt minimal. Could link to all public pages + schema + key entities.",
+          "recommendation": "Expand llms.txt with all public URLs, primary entities, key facts."
+        },
+        {
+          "title": "No speakable schema",
+          "severity": "Medium",
+          "description": "Voice/AI assistants could read key sections.",
+          "recommendation": "Add Speakable schema to homepage hero + How it works."
+        },
+        {
+          "title": "Reviewer not marked as Person/Author",
+          "severity": "Low",
+          "description": "'Reviewed by A. Rehman' not marked as Person schema.",
+          "recommendation": "Add Person schema for reviewer; link via reviewedBy."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 50,
+      "what_works": [
+        "Zero raster images — no optimization needed",
+        "SVG logo scales perfectly",
+        "No alt text issues (no content images)"
+      ],
+      "findings": [
+        {
+          "title": "No visual content strategy",
+          "severity": "Medium",
+          "description": "Pure text + tables. No diagrams, flowcharts, screenshots, or product photos.",
+          "recommendation": "Add: 1) Process flowchart (Send → Check → Review → Pay), 2) Sample report screenshot, 3) Dashboard preview for Desk plan."
+        },
+        {
+          "title": "No Open Graph / Twitter Card images",
+          "severity": "Low",
+          "description": "Social shares will have no image.",
+          "recommendation": "Create 1200x630 OG image for each page (or shared brand image)."
+        },
+        {
+          "title": "Logo SVG has no accessible name",
+          "severity": "Low",
+          "description": "aria-hidden='true' — screen readers skip it entirely.",
+          "recommendation": "If logo conveys brand, add <title> inside SVG or visible text fallback."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Add meta descriptions to 6 pages (15 min)",
+          "Add Service schema (Home, Pricing) (30 min)",
+          "Add FAQPage schema (Home, Pricing, Contact) (45 min)",
+          "Add HowTo schema (Home 'How it works') (20 min)",
+          "Move Three.js/GSAP/Tailwind CDN to homepage only (30 min)",
+          "Build Tailwind locally; remove CDN (1 hr)",
+          "Fix CSP for inline scripts (1 hr)"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Launch content hub /guides/ with 5 pillar articles (10 hrs)",
+          "Expand thin pages to 500+ words each (3 hrs)",
+          "Add 3-5 case studies with metrics (5 hrs)",
+          "Add Review/AggregateRating schema (20 min)",
+          "Add BreadcrumbList schema to all pages (30 min)",
+          "Create OG/Twitter Card images (2 hrs)",
+          "Add display=swap to Google Fonts (2 min)",
+          "Standardize title tags (10 min)",
+          "Add contextual internal links (15 min)",
+          "Fix heading hierarchy on Sample Report (5 min)",
+          "Add security.txt (10 min)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Publish 10+ blog posts targeting export doc keywords (20 hrs)",
+          "Build topic clusters: LC terms, HS codes, Pakistan customs, B/L errors (15 hrs)",
+          "Add LocalBusiness schema (15 min)",
+          "Add Speakable schema (20 min)",
+          "Expand llms.txt with full entity catalog (30 min)",
+          "Backlink outreach: Pakistan trade associations, freight forums, customs brokers (ongoing)"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Monitor GSC for indexing, search queries, CTR (weekly)",
+          "Track Core Web Vitals via CrUX (monthly)",
+          "Audit schema validity after each deploy (per deploy)",
+          "Update content for regulation changes (quarterly)",
+          "Competitor gap analysis (quarterly)"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
