@@ -1,0 +1,65 @@
+{
+  "shipments": [
+    {
+      "id": "shp_2291",
+      "reference": "KHI-2291",
+      "userId": "usr_001",
+      "userPhone": "+923001111111",
+      "buyer": "Van Dijk BV",
+      "lcTerms": "LC terms: 6109.10 cotton t-shirts, Rotterdam port",
+      "status": "under_review",
+      "documents": [
+        { "name": "Commercial Invoice", "type": "pdf", "size": "245KB", "uploaded": true },
+        { "name": "Packing List", "type": "pdf", "size": "180KB", "uploaded": true },
+        { "name": "Bill of Lading", "type": "pdf", "size": "310KB", "uploaded": true }
+      ],
+      "extractedFields": {
+        "grossWeight": { "invoice": "4,820 kg", "packingList": "4,280 kg", "billOfLading": "4,820 kg", "lcTerms": "4,820 kg" },
+        "cartons": { "invoice": "240", "packingList": "240", "billOfLading": "204", "lcTerms": "240" },
+        "consignee": { "invoice": "Van Dijk BV", "packingList": "Van Dijk BV", "billOfLading": "Van Dyk B.V.", "lcTerms": "Van Dijk BV" },
+        "hsCode": { "invoice": "6109.10", "packingList": "6109.10", "billOfLading": "6109.10", "lcTerms": "6109.10" },
+        "portOfDischarge": { "invoice": "Rotterdam", "packingList": "Rotterdam", "billOfLading": "Rotterdam", "lcTerms": "Rottterdam" }
+      },
+      "findings": [
+        { "field": "Gross weight", "mismatch": true, "agentCall": "Mismatch", "reviewerDecision": null },
+        { "field": "Cartons", "mismatch": true, "agentCall": "Mismatch", "reviewerDecision": null },
+        { "field": "Consignee", "mismatch": true, "agentCall": "Mismatch", "reviewerDecision": null },
+        { "field": "Port of discharge", "mismatch": true, "agentCall": "Mismatch", "reviewerDecision": null }
+      ],
+      "createdAt": "2026-11-14T00:00:00Z",
+      "reviewedAt": null,
+      "reviewerId": null,
+      "fee": 3000,
+      "paid": false
+    },
+    {
+      "id": "shp_2287",
+      "reference": "KHI-2287",
+      "userId": "usr_001",
+      "userPhone": "+923001111111",
+      "buyer": "Karachi Textiles",
+      "lcTerms": "LC terms: 6203.42 denim jeans, Hamburg port",
+      "status": "completed",
+      "documents": [
+        { "name": "Commercial Invoice", "type": "pdf", "size": "210KB", "uploaded": true },
+        { "name": "Packing List", "type": "pdf", "size": "165KB", "uploaded": true },
+        { "name": "Bill of Lading", "type": "pdf", "size": "280KB", "uploaded": true }
+      ],
+      "extractedFields": {
+        "grossWeight": { "invoice": "3,200 kg", "packingList": "3,200 kg", "billOfLading": "3,200 kg", "lcTerms": "3,200 kg" },
+        "cartons": { "invoice": "180", "packingList": "180", "billOfLading": "180", "lcTerms": "180" },
+        "consignee": { "invoice": "Müller & Co", "packingList": "Müller & Co", "billOfLading": "Müller & Co", "lcTerms": "Müller & Co" },
+        "hsCode": { "invoice": "6203.42", "packingList": "6203.42", "billOfLading": "6203.42", "lcTerms": "6203.42" },
+        "portOfDischarge": { "invoice": "Hamburg", "packingList": "Hamburg", "billOfLading": "Hamburg", "lcTerms": "Hamburg" }
+      },
+      "findings": [],
+      "createdAt": "2026-11-13T00:00:00Z",
+      "reviewedAt": "2026-11-13T00:00:00Z",
+      "reviewerId": "usr_002",
+      "fee": 3000,
+      "paid": true
+    }
+  ],
+  "payments": [],
+  "refunds": []
+}

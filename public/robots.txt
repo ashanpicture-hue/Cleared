@@ -1,37 +1,9 @@
-# Cleared — robots.txt
-# AI search bots are explicitly allowed so the site can be cited in AI answers.
-
+# Search and AI crawlers may read the public pages. The app, consoles and API are private.
 User-agent: *
 Allow: /
+Disallow: /app/
+Disallow: /reviewer/
+Disallow: /admin/
+Disallow: /api/
 
-# AI search crawlers
-Allow: / Googlebot
-Allow: / Google-Extended
-Allow: / GoogleOther
-Allow: / GPTBot
-Allow: / ChatGPT-User
-Allow: / OAI-SearchBot
-Allow: / ClaudeBot
-Allow: / anthropic-ai
-Allow: / Claude-Web
-Allow: / Claude-User
-Allow: / Claude-SearchBot
-Allow: / PerplexityBot
-Allow: / Perplexity-User
-Allow: / Applebot
-Allow: / Applebot-Extended
-Allow: / FacebookBot
-Allow: / Meta-ExternalAgent
-Allow: / YouBot
-Allow: / cohere-ai
-Allow: / MistralAI-User
-Allow: / CCBot
-Allow: / Bytespider
-Allow: / Diffbot
-Allow: / Amazonbot
-Allow: / DuckDuckBot
-Allow: / YandexBot
-Allow: / Bingbot
-
-# Sitemap
 Sitemap: https://cleared.devs.surf/sitemap.xml

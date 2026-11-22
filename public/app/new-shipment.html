@@ -3,108 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>New shipment — Cleared</title>
+<title>New shipment | Cleared</title>
+<meta name="description" content="New shipment">
+<meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
-<link rel="stylesheet" href="../css/cleared.css">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="../js/api.js" defer></script>
+<link rel="stylesheet" href="/css/cleared.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
-
-<header class="top"><div class="bar">
-<a class="logo" href="../index.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</a>
-<nav class="links" aria-label="Main"><a href="../index.html#how">How it works</a><a href="../pricing.html">Pricing</a><a href="../contact.html">Contact</a></nav>
-<a class="go" href="shipment.html">My shipments</a>
-</div></header>
-<div class="w" style="max-width:760px">
-
-<section style="padding:32px 0 80px" class="reveal-text">
-<h2>New shipment</h2>
-<p class="sub">Upload the PO or LC and your documents, or forward them from WhatsApp or email. Scans and Excel files are fine.</p>
-
-<div class="card reveal-card">
-<form id="shipmentForm" novalidate>
-<div class="form-group">
-<label for="shipmentRef">Shipment reference (optional)</label>
-<input type="text" id="shipmentRef" name="shipmentRef" placeholder="e.g. KHI-2291">
-</div>
-<div class="form-group">
-<label for="buyer">Buyer / consignee</label>
-<input type="text" id="buyer" name="buyer" placeholder="Van Dijk BV" required>
-</div>
-<div class="form-group">
-<label for="lc">LC or PO terms</label>
-<textarea id="lc" name="lc" rows="3" placeholder="Paste LC terms or PO number here…" required></textarea>
-</div>
-<div class="form-group">
-<label style="display:flex;justify-content:space-between;align-items:center"><span>Upload documents</span><span style="font-size:0.85rem;color:var(--mute);font-weight:400">PDF, scans, Excel</span></label>
-<input type="file" id="docs" name="docs" multiple accept=".pdf,.png,.jpg,.jpeg,.xlsx,.xls,.csv" required>
-<p style="color:var(--mute);font-size:0.85rem;margin-top:4px">Commercial invoice, packing list, bill of lading, and LC/PO.</p>
-</div>
-<div class="form-group">
-<label for="forward">Or forward from WhatsApp / email</label>
-<textarea id="forward" name="forward" rows="2" placeholder="Paste a WhatsApp chat export or email thread…"></textarea>
-<p style="color:var(--mute);font-size:0.85rem;margin-top:4px">We'll extract the documents and fields from the forwarded text.</p>
-</div>
-<button class="btn" type="submit">Start check</button>
-<p id="shipMsg" style="margin-top:12px;font-size:0.9rem;color:var(--mute)"></p>
-</form>
-</div>
-
-<div class="card" style="margin-top:24px" class="reveal-card">
-<h3>What happens next</h3>
-<ul style="color:var(--mute);padding-left:20px;margin-top:8px">
-<li>An agent extracts fields from every document.</li>
-<li>Our rules engine compares fields across documents and against your LC/PO.</li>
-<li>A person reviews the findings.</li>
-<li>You get a mismatch report and corrected document set to download.</li>
-</ul>
-<p style="color:var(--mute);font-size:0.9rem;margin-top:12px">Processing takes seconds to minutes. We'll notify you by WhatsApp or email when it's ready.</p>
-</div>
-
-</section>
-
-<footer class="site" style="margin-top:0"><div class="w">
-<div class="legal" style="justify-content:center"><span>© 2026 Cleared.</span><nav aria-label="Legal" style="gap:16px"><a href="../terms.html">Terms of Service</a><a href="../privacy.html">Privacy Policy</a><a href="../refund.html">Refund Policy</a></nav></div>
-</div></footer>
-
-<script src="../js/api.js"></script>
-<script>
-(function(){
-const form = document.getElementById('shipmentForm');
-const msg = document.getElementById('shipMsg');
-const btn = form.querySelector('button[type="submit"]');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const files = Array.from(form.docs.files);
-  const data = {
-    reference: form.shipmentRef.value.trim(),
-    buyer: form.buyer.value.trim(),
-    lcTerms: form.lc.value.trim(),
-    forwardText: form.forward.value.trim(),
-    files
-  };
-
-  btn.disabled = true;
-  btn.textContent = 'Processing…';
-  msg.textContent = '';
-
-  try {
-    const result = await ClearedAPI.shipmentAPI.create(data);
-    msg.textContent = 'Your shipment is being checked. We\'ll notify you when the report is ready.';
-    gsap.to(btn, { scale: 0.95, duration: 0.1, yoyo: true, repeat: 1 });
-    setTimeout(() => { location.href = 'shipment.html?id=' + result.shipment.id; }, 1200);
-  } catch (err) {
-    msg.textContent = err.message || 'Failed to create shipment.';
-    btn.disabled = false;
-    btn.textContent = 'Start check';
-    gsap.fromTo(form, { x: -8 }, { x: 8, duration: 0.1, yoyo: true, repeat: 3 });
-  }
-});
-})();
-</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><a class="logo" href="/"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</a><nav class="links" aria-label="Main"><a href="/app/new-shipment.html" aria-current="page">New shipment</a><a href="/app/shipment.html">My shipments</a><a href="/app/saved.html">Buyers</a><a href="/app/billing.html">Billing</a></nav><button class="go" data-logout type="button">Log out</button></div></header>
+<main id="main" class="w">
+<div class="page" style="max-width:760px;margin:0 auto"><div class="page-head"><div><h2>Send a shipment for checking</h2><p>Upload the PO or LC and your documents. Scans and Excel files are fine.</p><p class="note" id="freeLeft" style="margin-top:8px"></p></div></div>
+<div class="card"><form id="shipmentForm" novalidate>
+<div class="form-group"><label for="reference">Your reference (optional)</label><input type="text" id="reference" name="reference" maxlength="40" placeholder="KHI-2291"></div>
+<div class="form-group"><label for="buyer">Buyer or consignee</label><input type="text" id="buyer" name="buyer" maxlength="120" required></div>
+<div class="form-group"><label for="lc">LC or PO terms</label><textarea id="lc" name="lc" rows="4" placeholder="Paste the LC clauses or PO details"></textarea><p class="hint">Needed to check your documents against the LC.</p></div>
+<div class="form-group"><label for="docs">Documents</label><input type="file" id="docs" name="docs" multiple accept=".pdf,.png,.jpg,.jpeg,.xlsx,.xls,.csv"><p class="hint">Invoice, packing list, bill of lading. PDF, image, Excel or CSV. Under 4 MB each. Send larger scans on WhatsApp.</p><ul class="doc-list" id="fileList"></ul></div>
+<div class="form-group"><label for="forward">Or paste a forwarded message</label><textarea id="forward" name="forward" rows="3"></textarea></div>
+<button class="btn" type="submit">Start check</button><p class="msg" id="msg" role="alert"></p></form></div>
+<p class="note">An agent reads the documents, a person reviews the findings, and you get a WhatsApp message when the report is ready.</p></div>
+</main>
+<footer class="site slim"><div class="w"><div class="legal"><span>© 2026 Cleared. A second check, not a guarantee. It does not replace your customs agent's filing.</span><nav aria-label="Legal"><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a><a href="/refund.html">Refund Policy</a></nav></div></div></footer>
+<script src="/js/api.js"></script>
+<script src="/js/new-shipment.js"></script>
 </body>
 </html>

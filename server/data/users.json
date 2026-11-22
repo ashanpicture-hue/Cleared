@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "usr_001",
+      "phone": "+923001111111",
+      "name": "Aslam Khan",
+      "role": "customer",
+      "plan": "free",
+      "freeOrdersUsed": 1,
+      "freeOrdersLimit": 3,
+      "seats": 1,
+      "createdAt": "2026-11-01T00:00:00Z",
+      "isActive": true,
+      "isVerified": true
+    },
+    {
+      "id": "usr_002",
+      "phone": "+923002222222",
+      "name": "Sara Ahmed",
+      "role": "reviewer",
+      "plan": "desk",
+      "freeOrdersUsed": 0,
+      "freeOrdersLimit": 3,
+      "seats": 1,
+      "createdAt": "2026-11-05T00:00:00Z",
+      "isActive": true,
+      "isVerified": true
+    },
+    {
+      "id": "usr_003",
+      "phone": "+923003333333",
+      "name": "Admin User",
+      "role": "admin",
+      "plan": "desk",
+      "freeOrdersUsed": 0,
+      "freeOrdersLimit": 3,
+      "seats": 1,
+      "createdAt": "2026-11-01T00:00:00Z",
+      "isActive": true,
+      "isVerified": true
+    }
+  ],
+  "otpCodes": {}
+}

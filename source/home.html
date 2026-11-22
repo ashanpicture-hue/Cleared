@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cleared: export documents, cross-checked per shipment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
+<style>
+:root{--bg:#eef2f4;--surface:#fff;--ink:#0f2233;--mute:#4d6070;--line:#c9d4db;--sea:#1b6f8a;--flag:#c93a1e;--ok:#1d7a4b;--flagbg:#fbe6e0;--okbg:#e1f2e8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1721;--surface:#12232f;--ink:#e8eff3;--mute:#9bb0bd;--line:#264050;--sea:#5fb3cf;--flag:#ff8a6b;--ok:#6fd09b;--flagbg:#3a1d17;--okbg:#14352a}}
+:root[data-theme="dark"]{--bg:#0b1721;--surface:#12232f;--ink:#e8eff3;--mute:#9bb0bd;--line:#264050;--sea:#5fb3cf;--flag:#ff8a6b;--ok:#6fd09b;--flagbg:#3a1d17;--okbg:#14352a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.55 "Bricolage Grotesque",system-ui,sans-serif}
+html{--maxw:1040px}
+@media (min-width:1500px){html{--maxw:1320px;font-size:112.5%}}
+@media (min-width:2200px){html{--maxw:1700px;font-size:137.5%}}
+.w{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+h1,h2,h3{line-height:1.08;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,6vw,4.2rem);font-weight:800;max-width:14ch}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:none;padding:12px clamp(10px,3vw,24px);pointer-events:none}
+.bar{pointer-events:auto;box-shadow:0 10px 30px rgba(0,0,0,.28);max-width:var(--maxw);margin:0 auto;background:#0b1620;border-radius:14px;padding:10px 12px 10px 14px;display:flex;align-items:center;gap:30px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.2rem;text-decoration:none}
+.logo .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(160deg,#5fb3cf,#1b6f8a);display:grid;place-items:center}
+.bar .links{display:flex;gap:26px;flex:1}
+.bar .links a{color:#9bb0bd;text-decoration:none;font-weight:600;font-size:.98rem}
+.bar .links a:hover{color:#fff}
+.bar .go{background:#fff;color:#0b1620;font-weight:600;text-decoration:none;padding:9px 18px;border-radius:9px;white-space:nowrap}
+a.btn,button.btn{display:inline-block;background:var(--ink);color:var(--bg);font:600 1rem "Bricolage Grotesque",sans-serif;padding:12px 20px;border-radius:6px;border:0;text-decoration:none;cursor:pointer}
+a.btn.alt,button.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;padding:30px 0 70px}
+.hero p.lead{margin:20px 0 26px;color:var(--mute);max-width:44ch}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.note{color:var(--mute);margin-top:14px;font-size:.95rem}
+.note b{color:var(--ok)}
+.set{background:var(--surface);border:1.5px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink)}
+.set header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1.5px solid var(--ink);font-weight:600;gap:10px;flex-wrap:wrap}
+.stamp{font-weight:800;padding:2px 10px;border:2px solid;border-radius:3px;transform:rotate(-3deg);font-size:.9rem}
+.stamp.bad{color:var(--flag)}.stamp.good{color:var(--ok)}
+.tbl{width:100%;border-collapse:collapse;font-size:.92rem}
+.tbl th{text-align:left;font-weight:600;color:var(--mute);padding:8px 16px;border-bottom:1px solid var(--line);font-size:.82rem}
+.tbl td{padding:8px 16px;border-bottom:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:.85rem}
+.tbl td:first-child{font-family:inherit;font-weight:600}
+.tbl td.x{background:var(--flagbg);color:var(--flag);font-weight:500}
+.tbl td.ok{background:var(--okbg);color:var(--ok)}
+.set footer{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:var(--mute);font-size:.9rem}
+section{padding:60px 0;border-top:1.5px solid var(--line)}
+section>.w>p.sub{color:var(--mute);margin:12px 0 32px;max-width:60ch}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tier{background:var(--surface);border:1.5px solid var(--line);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.tier.main{border-color:var(--ink);border-width:2px;box-shadow:6px 6px 0 var(--ink)}
+.price{font-size:2.4rem;font-weight:800;letter-spacing:-.03em}
+.price small{font-size:.95rem;font-weight:400;color:var(--mute)}
+.tier ul{margin:0;padding-left:18px;color:var(--mute)}
+.tier li{margin:4px 0}
+.tier .who{color:var(--mute);font-size:.95rem}
+.eco{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1.5px solid var(--line);border-radius:4px;background:var(--surface)}
+.eco div{padding:20px;border-bottom:1px solid var(--line)}
+.eco div:nth-child(odd){border-right:1px solid var(--line)}
+.eco div:nth-last-child(-n+2){border-bottom:0}
+.eco p{color:var(--mute);margin-top:6px;font-size:.97rem}
+.zero{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.zero div{border-left:3px solid var(--sea);padding-left:14px}
+.zero p{color:var(--mute);font-size:.95rem;margin-top:4px}
+footer.site{margin-top:40px;padding:90px 0 24px;border-top:1.5px solid var(--line);text-align:center}
+.big{list-style:none;margin:0 0 56px;padding:0;font:400 clamp(2rem,5vw,3.2rem)/1.2 Fraunces,Georgia,serif}
+.big a{color:var(--ink);text-decoration:none}.big a:hover{color:var(--sea)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:760px;margin:0 auto 80px}
+.cols h4{margin:0 0 18px;font-weight:400;color:var(--mute);font-size:.95rem}
+.cols a{display:block;color:var(--ink);text-decoration:none;margin-bottom:16px;font-size:.98rem}
+.word{display:block;width:100%;height:auto;margin-bottom:22px;font-family:Fraunces,Georgia,serif;font-weight:500}
+.legal{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--mute);font-size:.9rem;text-align:left}
+.legal nav{display:flex;gap:24px}.legal a{color:var(--ink);text-decoration:none}
+@media (max-width:1000px){.zero{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.bar .links{display:none}.bar{justify-content:space-between}.hero{padding:10px 0 50px}section{padding:44px 0}.set,.tier.main{box-shadow:4px 4px 0 var(--ink)}.tbl th,.tbl td{padding:8px 10px}.cols{grid-template-columns:1fr 1fr}.legal{flex-direction:column;align-items:flex-start}footer.site{padding-top:60px}.row .btn{flex:1;text-align:center}.bar .go{padding:8px 14px}.logo{font-size:1.1rem}}
+@media (max-width:820px){.hero,.tiers,.zero{grid-template-columns:1fr}.eco{grid-template-columns:1fr}.eco div{border-right:0!important;border-bottom:1px solid var(--line)!important}.eco div:last-child{border-bottom:0!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+<a class="logo" href="#"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</a>
+<nav class="links" aria-label="Main"><a href="#how">How it works</a><a href="#tiers">Pricing</a><a href="#eco">Partners</a></nav>
+<a class="go" href="#tiers">Send a shipment</a>
+</div></header>
+<div class="w">
+
+<div class="hero">
+<div>
+<h1>Export documents that agree with each other before the bank sees them</h1>
+<p class="lead">Send us the invoice, packing list, bill of lading and your LC or buyer PO. We find where they disagree and send back a corrected set, checked by a person, before you submit it. Made for exporters in Pakistan.</p>
+<div class="row"><a class="btn" href="#tiers">Send your first shipment</a><a class="btn alt" href="#how">How it works</a></div>
+<p class="note"><b>Your first 10 orders are free.</b> No card needed.</p>
+</div>
+
+<div class="set" aria-live="polite">
+<header><span>Shipment KHI-2291 to Rotterdam</span><span class="stamp bad" id="stamp">3 MISMATCHES</span></header>
+<div style="overflow-x:auto"><table class="tbl" style="min-width:420px">
+<thead><tr><th>Field</th><th>Invoice</th><th>Packing list</th><th>Bill of lading</th></tr></thead>
+<tbody>
+<tr><td>Gross weight</td><td>4,820 kg</td><td class="x" data-f="4,820 kg">4,280 kg</td><td>4,820 kg</td></tr>
+<tr><td>Cartons</td><td>240</td><td>240</td><td class="x" data-f="240">204</td></tr>
+<tr><td>Consignee</td><td>Van Dijk BV</td><td>Van Dijk BV</td><td class="x" data-f="Van Dijk BV">Van Dyk B.V.</td></tr>
+<tr><td>HS code</td><td>6109.10</td><td>6109.10</td><td>6109.10</td></tr>
+</tbody></table></div>
+<footer><span id="msg">Three fields differ. Fix them before you submit.</span><button class="btn" id="fix">Fix all three</button></footer>
+</div>
+</div>
+</div>
+
+<section id="tiers"><div class="w">
+<h2>Pricing</h2>
+<p class="sub">Your first 10 orders are free. After that you pay when the finished set arrives, by bank transfer, JazzCash, Easypaisa or Raast. These are starting prices and may change after the first pilots.</p>
+<div class="tiers">
+<div class="tier"><h3>Per shipment</h3><div class="price">Rs 3,000 <small>and up, per shipment</small></div><p class="who">Small exporters who ship a few times a month and don't want a full-time documentation officer.</p>
+<ul><li><b>First 10 shipments free</b></li><li>Send the PO and documents on WhatsApp or email</li><li>Every shared field compared</li><li>Mismatch report and corrected set as PDF</li></ul><a class="btn alt" href="#">Send a shipment</a></div>
+<div class="tier main"><h3>Desk</h3><div class="price">Rs 35,000 <small>per month</small></div><p class="who">Forwarders, clearing agents and exporters who prepare documents every week.</p>
+<ul><li>Up to 20 shipments a month</li><li>Saved buyers, products and HS codes</li><li>LC terms checked against every document</li><li>Seats for your staff</li></ul><a class="btn" href="#">Book a trial month</a></div>
+<div class="tier"><h3>Partners</h3><div class="price">Quoted <small>after a pilot</small></div><p class="who">Freight software makers and trade platforms that want document checks inside their own product.</p>
+<ul><li>API for document checks</li><li>Your branding on the report</li><li>A record of every check</li><li>Volume pricing</li></ul><a class="btn alt" href="#">Talk to us</a></div>
+</div></div></section>
+
+<section id="eco"><div class="w">
+<h2>Who joins as it grows</h2>
+<p class="sub">Exporters bring the shipments. The others join once there are shipments to work on.</p>
+<div class="eco">
+<div><h3>Exporters</h3><p>They pay per shipment. Each checked set adds to their saved buyers and products.</p></div>
+<div><h3>Forwarders</h3><p>They move to the Desk plan and check shipments for their own clients.</p></div>
+<div><h3>Documentation freelancers</h3><p>They review the cases the agent is unsure about and are paid per case.</p></div>
+<div><h3>Banks and brokers</h3><p>They receive cleaner document sets and can plug the checker into their own tools.</p></div>
+</div></div></section>
+
+<section id="how"><div class="w">
+<h2>How it works</h2>
+<p class="sub">A person reviews every report before it reaches you.</p>
+<div class="zero">
+<div><h3>Send</h3><p>Share the PO or LC and your documents by WhatsApp or email. Scans and Excel files are fine.</p></div>
+<div><h3>Check</h3><p>The agent compares quantities, values, weights, descriptions, dates and party details across every document.</p></div>
+<div><h3>Review</h3><p>We read the report ourselves and fix anything the agent got wrong.</p></div>
+<div><h3>Pay</h3><p>You pay after the set arrives. If it fails our checklist, we refund our fee.</p></div>
+</div></div></section>
+
+<footer class="site"><div class="w">
+<ul class="big"><li><a href="#how">How it works</a></li><li><a href="#tiers">Pricing</a></li><li><a href="#eco">Partners</a></li><li><a href="#tiers">Send a shipment</a></li></ul>
+<div class="cols">
+<div><h4>Product</h4><a href="#how">Document checks</a><a href="#tiers">Pricing</a><a href="#eco">Who joins</a></div>
+<div><h4>Trust</h4><a href="#how">Human review</a><a href="#tiers">Refund terms</a></div>
+<div><h4>Contact</h4><a href="#">WhatsApp</a><a href="#">Email</a><a href="#">LinkedIn</a></div>
+</div>
+<svg class="word" viewBox="0 0 1000 250" aria-hidden="true"><text x="2" y="215" font-size="270" textLength="996" lengthAdjust="spacingAndGlyphs" fill="none" stroke="var(--mute)" stroke-width="1.5">CLEARED</text></svg>
+<div class="legal"><span>© 2026 Cleared. A second check, not a guarantee. It does not replace your customs agent's filing.</span><nav aria-label="Legal"><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></nav></div>
+</div></footer>
+
+<script>
+(function(){
+var fix=document.getElementById('fix'),stamp=document.getElementById('stamp'),msg=document.getElementById('msg');
+fix.addEventListener('click',function(){
+document.querySelectorAll('td.x').forEach(function(td){td.textContent=td.dataset.f;td.className='ok';});
+stamp.textContent='CLEARED';stamp.className='stamp good';
+msg.textContent='All fields now agree. Corrected set is ready.';
+fix.disabled=true;fix.textContent='Fixed';
+});
+})();
+</script>
+</body>
+</html>

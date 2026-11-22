@@ -3,51 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Costs — Cleared admin</title>
+<title>Costs | Cleared</title>
+<meta name="description" content="Costs">
+<meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
-<link rel="stylesheet" href="../css/cleared.css">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="../js/api.js" defer></script>
+<link rel="stylesheet" href="/css/cleared.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
-<div class="app-shell">
-<aside class="app-sidebar">
-<div class="brand" style="color:#ff8a6b"><span class="ic" style="width:28px;height:28px;border-radius:7px;background:#12232f;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Admin</div>
-<nav>
-<a href="users.html">Users</a>
-<a href="orders.html">Orders</a>
-<a href="costs.html" class="active">Costs</a>
-<a href="refunds.html">Refunds</a>
-</nav>
-</aside>
-<main class="app-main">
-<div class="app-header reveal-card">
-<h2>Cost per shipment</h2>
-<p style="color:var(--mute);font-size:0.95rem">Model usage plus review minutes. Helps set pricing and spot unprofitable shipments.</p>
-</div>
-
-<div class="card reveal-card" style="margin-bottom:24px">
-<h3>Average cost per shipment</h3>
-<div style="font-size:2rem;font-weight:800">Rs 420</div>
-<p style="color:var(--mute);margin-top:6px">Model usage (OCR + extraction) plus reviewer minutes, averaged over the last 30 days.</p>
-</div>
-
-<div class="card reveal-card">
-<h3>Cost breakdown</h3>
-<table class="tbl" style="min-width:420px">
-<thead><tr><th>Component</th><th>Cost per shipment</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td>OCR (scans)</td><td>Rs 60</td><td>Per scanned page</td></tr>
-<tr><td>Extraction model</td><td>Rs 180</td><td>Per document set</td></tr>
-<tr><td>Reviewer minutes</td><td>Rs 140</td><td>~7 minutes per shipment</td></tr>
-<tr><td>Storage &amp; delivery</td><td>Rs 40</td><td>PDF generation and delivery</td></tr>
-</tbody></table>
-</div>
-
-</main>
-</div>
-
+<a class="skip" href="#main">Skip to content</a>
+<div class="app-shell"><aside class="app-sidebar"><div class="brand"><span class="ic" style="width:28px;height:28px;border-radius:7px;background:var(--sea);display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Admin</div><nav aria-label="Console"><a href="/admin/orders.html">Orders</a><a href="/admin/users.html">Users</a><a href="/admin/costs.html" aria-current="page">Costs</a><a href="/admin/refunds.html">Refunds</a><a href="/reviewer/queue.html">Review queue</a></nav><button class="out" data-logout type="button">Log out</button></aside>
+<main id="main" class="app-main">
+<div class="page-head"><div><h2>Cost per shipment</h2><p>Model usage plus reviewer time. Use it to set prices and spot shipments that lose money.</p></div></div>
+<div class="card"><h3>Average cost per completed shipment</h3><div class="stat" id="total"><span class="skel" style="width:5ch"></span></div><p class="sub" style="margin:6px 0 0" id="count"></p></div>
+<div class="cards3"><div class="card"><h3>Model usage</h3><div class="stat" id="model"><span class="skel" style="width:5ch"></span></div></div><div class="card"><h3>Reviewer time</h3><div class="stat" id="review"><span class="skel" style="width:5ch"></span></div></div><div class="card"><h3>Minutes per shipment</h3><div class="stat" id="mins"><span class="skel" style="width:5ch"></span></div></div></div>
+</main></div>
+<script src="/js/api.js"></script>
+<script src="/js/admin-costs.js"></script>
 </body>
 </html>
