@@ -8,6 +8,7 @@
     cells.forEach((td, i) => setTimeout(() => {
       td.textContent = td.dataset.f; td.className = 'ok';
       const left = cells.length - i - 1;
+      window.dispatchEvent(new CustomEvent('cleared:mismatches', { detail: { left, total: cells.length } }));
       if (left) { stamp.textContent = left + (left > 1 ? ' MISMATCHES' : ' MISMATCH'); return; }
       stamp.textContent = 'CLEARED'; stamp.className = 'stamp good pop';
       msg.textContent = 'All fields now agree. Corrected set is ready.';

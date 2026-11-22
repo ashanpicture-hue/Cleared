@@ -7,7 +7,7 @@
 <meta name="description" content="Cleared compares your invoice, packing list, bill of lading and LC across every shared field and sends back a corrected set, checked by a person. Made for exporters in Pakistan.">
 <meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;600;900&display=swap">
 <link rel="stylesheet" href="/css/cleared.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Cleared","url":"https://cleared.devs.surf/","description":"Export document checking for Pakistani exporters: mismatch reports and corrected document sets, reviewed by a person before bank submission."}</script>
@@ -19,7 +19,7 @@
 <main id="main"><div class="w">
 <div class="hero">
 <div>
-<h1>Export documents that agree with each other before the bank sees them</h1>
+<h1>Export documents that <mark>agree with each other</mark> before the bank sees them</h1>
 <p class="lead">Send us the invoice, packing list, bill of lading and your LC or buyer PO. We find where they disagree and send back a corrected set, checked by a person, before you submit it. Made for exporters in Pakistan.</p>
 <div class="row"><a class="btn lg" href="/app/signup.html">Send your first shipment</a><a class="btn alt" href="#how">How it works</a></div>
 <p class="note"><b>Your first 10 orders are free.</b> No card needed.</p>
@@ -35,10 +35,12 @@
 <tr><td>Consignee</td><td>Van Dijk BV</td><td>Van Dijk BV</td><td class="x" data-f="Van Dijk BV">Van Dyk B.V.</td></tr>
 <tr><td>HS code</td><td>6109.10</td><td>6109.10</td><td>6109.10</td></tr>
 </tbody></table></div>
-<footer><span id="msg">Three fields differ. Fix them before you submit.</span><button class="btn" id="fix">Fix all three</button></footer>
+<footer><span id="msg">Three fields differ. Fix them before you submit.</span><button class="btn glacier" id="fix">Fix all three</button></footer>
 </div>
 </div>
 </div>
+
+<section id="ripple-band"><div class="w"><div class="ripple-card"><div class="ripple" id="ripple" role="img" aria-label="A large letter c that ripples while documents disagree and settles when they agree"><canvas></canvas></div><div class="ripple-copy"><h2>One wrong digit and the set wobbles. Fix it and it settles.</h2><p>Press Fix all three above. The letter calms as each mismatch clears.</p></div></div></div></section>
 
 <section id="report"><div class="w"><div class="split"><div><h2>What comes back: each mismatch, in plain words</h2><p class="sub">Every difference names the document it came from and what it should say. A person checks the report before you see it.</p><a class="btn alt" href="/sample-report.html">See a full sample report</a></div><div class="card" style="margin:0"><h3>What to fix</h3><ul class="findings" style="margin-top:16px"><li><b>Gross weight</b>Packing list shows 4,280 kg. Expected 4,820 kg (digits swapped).</li><li><b>Cartons</b>Bill of lading shows 204. Expected 240 (digits swapped).</li><li><b>Consignee</b>Bill of lading shows Van Dijk BV as Van Dyk B.V. (spelling).</li></ul></div></div></div></section>
 
@@ -49,7 +51,7 @@
 <div class="tier"><h3>Per shipment</h3><div class="price">Rs 3,000 <small>and up, per shipment</small></div><p class="who">Small exporters who ship a few times a month and don't want a full-time documentation officer.</p>
 <ul><li><b>First 10 shipments free</b></li><li>Send the PO and documents on WhatsApp or email</li><li>Every shared field compared</li><li>Mismatch report and corrected set as PDF</li></ul><a class="btn alt" href="/app/signup.html">Send a shipment</a></div>
 <div class="tier main"><h3>Desk</h3><div class="price">Rs 35,000 <small>per month</small></div><p class="who">Forwarders, clearing agents and exporters who prepare documents every week.</p>
-<ul><li>Up to 20 shipments a month</li><li>Saved buyers, products and HS codes</li><li>LC terms checked against every document</li><li>Seats for your staff</li></ul><a class="btn" href="/app/signup.html">Book a trial month</a></div>
+<ul><li>Up to 20 shipments a month</li><li>Saved buyers, products and HS codes</li><li>LC terms checked against every document</li><li>Seats for your staff</li></ul><a class="btn alt" href="#">Book a trial month</a></div>
 <div class="tier"><h3>Partners</h3><div class="price">Quoted <small>after a pilot</small></div><p class="who">Freight software makers and trade platforms that want document checks inside their own product.</p>
 <ul><li>API for document checks</li><li>Your branding on the report</li><li>A record of every check</li><li>Volume pricing</li></ul><a class="btn alt" href="/contact.html">Talk to us</a></div>
 </div></div></section>
@@ -76,5 +78,6 @@
 </main>
 <footer class="site"><div class="w"><ul class="big"><li><a href="/#how">How it works</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/#eco">Partners</a></li><li><a href="/app/signup.html">Send a shipment</a></li></ul><div class="cols"><div><h4>Product</h4><a href="/#how">Document checks</a><a href="/pricing.html">Pricing</a><a href="/sample-report.html">Sample report</a></div><div><h4>Trust</h4><a href="/#how">Human review</a><a href="/refund.html">Refund terms</a></div><div><h4>Contact</h4><a href="/contact.html">WhatsApp</a><a href="/contact.html">Email</a></div></div><svg class="word" viewBox="0 0 1000 250" aria-hidden="true"><text x="2" y="215" font-size="270" textLength="996" lengthAdjust="spacingAndGlyphs" fill="none" stroke="var(--mute)" stroke-width="1.5">CLEARED</text></svg><div class="legal"><span>© 2026 Cleared. A second check, not a guarantee. It does not replace your customs agent's filing.</span><nav aria-label="Legal"><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a><a href="/refund.html">Refund Policy</a></nav></div></div></footer>
 <script src="/js/home.js"></script>
+<script src="/js/kinetic.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import re, pathlib
 SRC = pathlib.Path(__file__).parent / 'source'; OUT = pathlib.Path('public')
 LOGO = '<a class="logo" href="/"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cleared</a>'
-FONTS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;500&display=swap'
+FONTS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;600;900&display=swap'
 
 def head(title, desc, noindex=False, ld=''):
     robots = '<meta name="robots" content="noindex, nofollow">' if noindex else ''
@@ -84,17 +84,18 @@ mid = art.split('</header>', 1)[1].split('<footer class="site">', 1)[0]
 mid = mid.replace('<div class="w">\n\n<div class="hero">', '<main id="main"><div class="w">\n<div class="hero">', 1)
 mid = mid.replace('<a class="btn" href="#tiers">Send your first shipment</a>', '<a class="btn" href="/app/signup.html">Send your first shipment</a>')
 mid = mid.replace('<a class="btn alt" href="#">Send a shipment</a>', '<a class="btn alt" href="/app/signup.html">Send a shipment</a>')
-mid = mid.replace('<a class="btn" href="#">Book a trial month</a>', '<a class="btn" href="/app/signup.html">Book a trial month</a>')
+mid = mid.replace('<a class="btn" href="#">Book a trial month</a>', '<a class="btn alt" href="/app/signup.html">Book a trial month</a>')
 mid = mid.replace('<a class="btn alt" href="#">Talk to us</a>', '<a class="btn alt" href="/contact.html">Talk to us</a>')
 mid = mid.replace('<div class="set" aria-live', '<div class="set" id="demo" aria-live')
 mid = mid.replace('<table class="tbl">', '<table class="tbl" style="min-width:420px">') if 'min-width' not in mid else mid
 mid = mid.replace('<h2>Pricing</h2>', '<h2>Rs 3,000 a shipment, and your first 10 are free</h2>').replace('<h2>Who joins as it grows</h2>', '<h2>Who joins once exporters are shipping</h2>').replace('<h2>How it works</h2>', '<h2>From upload to signed-off report in four steps</h2>')
 mid = mid.replace('<a class="btn" href="/app/signup.html">Send your first shipment</a>', '<a class="btn lg" href="/app/signup.html">Send your first shipment</a>')
 REPORT = '<section id="report"><div class="w"><div class="split"><div><h2>What comes back: each mismatch, in plain words</h2><p class="sub">Every difference names the document it came from and what it should say. A person checks the report before you see it.</p><a class="btn alt" href="/sample-report.html">See a full sample report</a></div><div class="card" style="margin:0"><h3>What to fix</h3><ul class="findings" style="margin-top:16px"><li><b>Gross weight</b>Packing list shows 4,280 kg. Expected 4,820 kg (digits swapped).</li><li><b>Cartons</b>Bill of lading shows 204. Expected 240 (digits swapped).</li><li><b>Consignee</b>Bill of lading shows Van Dijk BV as Van Dyk B.V. (spelling).</li></ul></div></div></div></section>\n\n'
-mid = mid.replace('<section id="tiers">', REPORT + '<section id="tiers">', 1)
+RIPPLE = '<section id="ripple-band"><div class="w"><div class="ripple-card"><div class="ripple" id="ripple" role="img" aria-label="A large letter c that ripples while documents disagree and settles when they agree"><canvas></canvas></div><div class="ripple-copy"><h2>One wrong digit and the set wobbles. Fix it and it settles.</h2><p>Press Fix all three above. The letter calms as each mismatch clears.</p></div></div></div></section>\n\n'
+mid = mid.replace('<section id="tiers">', RIPPLE + REPORT + '<section id="tiers">', 1)
 mid = fix(mid).rstrip() + '\n</main>\n'
 home_ld = '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Cleared","url":"https://cleared.devs.surf/","description":"Export document checking for Pakistani exporters: mismatch reports and corrected document sets, reviewed by a person before bank submission."}</script>\n'
-write('index.html', head('Cleared: export documents, cross-checked per shipment', 'Cleared compares your invoice, packing list, bill of lading and LC across every shared field and sends back a corrected set, checked by a person. Made for exporters in Pakistan.', False, home_ld) + pub_nav() + mid + FOOT + '<script src="/js/home.js"></script>\n</body>\n</html>\n')
+write('index.html', head('Cleared: export documents, cross-checked per shipment', 'Cleared compares your invoice, packing list, bill of lading and LC across every shared field and sends back a corrected set, checked by a person. Made for exporters in Pakistan.', False, home_ld) + pub_nav() + mid + FOOT + '<script src="/js/home.js"></script>\n<script src="/js/kinetic.js"></script>\n</body>\n</html>\n')
 
 # Customer pages
 def customer(name, title, cur, body, *js):
